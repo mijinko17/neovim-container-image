@@ -32,7 +32,7 @@ FROM base as default
 
 FROM base as rust
 
-RUN curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh -s -- -y
+RUN curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh -s -- -y -c rust-analyzer
 ENV PATH $PATH:/home/$user/.cargo/bin
 
 USER root
@@ -40,4 +40,3 @@ RUN apt-get update && \
     apt-get install build-essential -y && \
     apt-get clean
 USER $user
-RUN nvim --headless -c 'MasonInstall rust-analyzer' -c qall
