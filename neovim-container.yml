@@ -1,0 +1,16 @@
+services:
+  default:
+    image: mijinko17/neovim-container-uid-1000:latest
+    volumes:
+      - ~/zettelkasten:/home/neovim/zettelkasten
+      - ~/.ssh:/home/neovim/.ssh
+      - ~/.gitconfig:/home/neovim/.gitconfig
+    before: mkdir -p ~/zettelkasten
+  develop:
+    image: mijinko17/neovim-container-uid-1000:develop
+    volumes:
+      - ~/zettelkasten:/home/neovim/zettelkasten
+      - ~/.ssh:/home/neovim/.ssh
+      - ~/.gitconfig:/home/neovim/.gitconfig
+    before: echo hello develop && mkdir -p ~/zettelkasten
+
