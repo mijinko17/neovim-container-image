@@ -40,3 +40,4 @@ RUN apt-get update && \
     apt-get install build-essential -y && \
     apt-get clean
 USER $user
+RUN nvim --headless -c 'MasonInstall rust-analyzer' -c qall
