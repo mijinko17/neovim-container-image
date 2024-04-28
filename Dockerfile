@@ -21,8 +21,8 @@ RUN userdel node && \
 USER $user
 
 COPY --chown=$user container-files/.config/ /home/$user/.config
-COPY --chmod=0755 --chown=$user container-files/scripts/copy.sh /home/$user/bin/copy.sh
-COPY --chmod=0755 --chown=$user container-files/scripts/paste.sh /home/$user/bin/paste.sh
+COPY --chmod=0755 --chown=$user container-files/bin/copy.sh /home/$user/bin/copy.sh
+COPY --chmod=0755 --chown=$user container-files/bin/paste.sh /home/$user/bin/paste.sh
 ENV PATH $PATH:/home/$user/bin
 
 RUN nvim --headless -c 'Lazy install' -c qall
