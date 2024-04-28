@@ -27,3 +27,16 @@ ENV PATH $PATH:/home/$user/bin
 
 RUN nvim --headless -c 'Lazy install' -c qall
 RUN nvim --headless -c 'MasonInstall lua-language-server shellcheck shfmt prettier' -c qall
+
+FROM base as default
+
+FROM base as rust
+
+RUN curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh -s -- -y
+ENV PATH $PATH:/home/$user/.cargo/bin
+
+USER root
+RUN apt-get update && \
+    apt-get install build-essential -y && \
+    apt-get clean
+USER $user
