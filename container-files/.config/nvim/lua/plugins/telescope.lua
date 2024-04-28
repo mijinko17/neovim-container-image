@@ -13,8 +13,8 @@ return {
       },
       pickers = {
         live_grep = {
-          additional_args = function(opts)
-            return { "--hidden" }
+          additional_args = function()
+            return { "--with-filename", "--hidden" }
           end
         },
       },
