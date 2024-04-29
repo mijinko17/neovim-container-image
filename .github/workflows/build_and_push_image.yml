@@ -11,12 +11,8 @@ jobs:
       fail-fast: false
       matrix:
         job:
-          - {
-              target: default,
-            }
-          - {
-              target: rust,
-            }
+          - { target: default, os: bookworm }
+          - { target: rust, os: bullseye }
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -40,3 +36,4 @@ jobs:
           target: ${{ matrix.job.target }}
           build-args: |
             uid=1000
+            os=${{ matrix.job.os }}
